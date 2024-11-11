@@ -19,12 +19,16 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          channel: 'stable'
-          flutter-version: '3.24.4'
+          channel: "stable"
+          flutter-version: "3.24.4"
           cache: true
 
       - name: Install dependencies
         run: flutter pub get
+
+      # Thêm bước này để chạy lệnh gen-l10n
+      - name: Generate localizations
+        run: flutter gen-l10n
 
       - name: Run tests
         run: flutter test
